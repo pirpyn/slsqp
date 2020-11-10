@@ -1,0 +1,8 @@
+{
+  "ext_source_dirs": [
+    "src",
+    "src/tests"
+  ],
+  "lowercase_intrinsics": true,
+  "debug_log": false
+}

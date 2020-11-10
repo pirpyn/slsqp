@@ -1,0 +1,17 @@
+// === file generated with
+// === /home/ppayen/bin/new_work -m ies-ams-dev-44 -n ELDO-25671
+// === at Mon Nov  2 10:44:15 CET 2020 by ppayen
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "FoBiS build",
+            "type": "shell",
+            "command": "FoBiS.py build",
+            "group": "build",
+            "problemMatcher": "$gcc",
+        }
+    ]
+}

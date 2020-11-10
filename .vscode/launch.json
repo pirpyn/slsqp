@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+      {
+        "name": "Debug current file",
+        "type": "cppdbg",
+        "request": "launch",
+        "targetArchitecture": "x86",
+        "program": "${workspaceRoot}/bin/${fileBasenameNoExtension}",
+        "miDebuggerPath": "/usr/bin/gdb",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${workspaceRoot}",
+        "externalConsole": false,
+        // "preLaunchTask": "FoBiS build"
+      }
+    ]
+  }
