@@ -9,7 +9,7 @@
         {
             "label": "FoBiS build",
             "type": "shell",
-            "command": "FoBiS.py build",
+            "command": "FoBiS.py build -f slsqp.fobis -mode tests-gnu-debug ",
             "group": "build",
             "problemMatcher": "$gcc",
         }

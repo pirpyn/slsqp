@@ -6,13 +6,13 @@
         "type": "cppdbg",
         "request": "launch",
         "targetArchitecture": "x86",
-        "program": "${workspaceRoot}/bin/${fileBasenameNoExtension}",
+        "program": "${workspaceRoot}/bin/slsqp_test",
         "miDebuggerPath": "/usr/bin/gdb",
         "args": [],
         "stopAtEntry": false,
         "cwd": "${workspaceRoot}",
         "externalConsole": false,
-        // "preLaunchTask": "FoBiS build"
+        "preLaunchTask": "FoBiS build"
       }
     ]
   }
