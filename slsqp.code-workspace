@@ -18,7 +18,7 @@
         // it will produces .mod file next to the source by default.
         // By settings the following lines to your mod directory absolute path made by FoBiS,
         // we removes this behaviour. Sadly, this has to be adapted for each clone.
-        "fortran.includePaths": [ "/home/pirpyn/slsqp/mod" ],
-        "fortran.linterExtraArgs": [ "-J/home/pirpyn/slsqp/mod" ],
+        "fortran.includePaths": [ "/home/pirpyn/slsqp/lib/mod" ],
+        "fortran.linterExtraArgs": [ "-J/home/pirpyn/slsqp/lib/mod" ],
     }
 }
