@@ -696,7 +696,7 @@
     real(wp),dimension(n)    :: xl
     real(wp),dimension(n)    :: xu
     real(wp) :: diag , xnorm
-    integer :: i , ic , id , ie , if , ig , ih , il , im , ip , &
+    integer :: i , ic , id , ie , iff , ig , ih , il , im , ip , &
                iu , iw , i1 , i2 , i3 , i4 , mineq , &
                m1 , n1 , n2 , n3
 
@@ -722,7 +722,7 @@
       i3 = 1
       i4 = 1
       ie = 1
-      if = n*n + 1
+      iff = n*n + 1
       do i = 1 , n3
          i1 = n1 - i
          diag = sqrt(l(i2))
@@ -731,7 +731,7 @@
          call dcopy(i1-n2,l(i2),1,w(i3),n)
          call dscal(i1-n2,diag,w(i3),n)
          w(i3) = diag
-         w(if-1+i) = (g(i)-ddot(i-1,w(i4),1,w(if),1))/diag
+         w(iff-1+i) = (g(i)-ddot(i-1,w(i4),1,w(iff),1))/diag
          i2 = i2 + i1 - n2
          i3 = i3 + n1
          i4 = i4 + n
@@ -740,11 +740,11 @@
          w(i3) = l(nl)
          w(i4) = zero
          call dcopy(n3,w(i4),0,w(i4),1)
-         w(if-1+n) = zero
+         w(iff-1+n) = zero
       end if
-      call dscal(n,-one,w(if),1)
+      call dscal(n,-one,w(iff),1)
 
-      ic = if + n
+      ic = iff + n
       id = ic + meq*n
 
       if ( meq>0 ) then
@@ -807,7 +807,7 @@
 
       iw = iu + n
 
-      call lsei(w(ic),w(id),w(ie),w(if),w(ig),w(ih),max(1,meq),meq,n,n, &
+      call lsei(w(ic),w(id),w(ie),w(iff),w(ig),w(ih),max(1,meq),meq,n,n, &
                 m1,m1,n,x,xnorm,w(iw),mode)
 
       if ( mode==1 ) then
@@ -888,7 +888,7 @@
                                                     !! * ***6:*** matrix `c` is not of full rank,
                                                     !! * ***7:*** rank defect in [[hfti]]
 
-    integer :: i , ie, if , ig , iw , j , k , krank , l , mc1
+    integer :: i , ie, iff , ig , iw , j , k , krank , l , mc1
     real(wp) :: t , dum(1)
 
     mode = 2
@@ -897,8 +897,8 @@
         mc1 = mc + 1
         iw = (l+1)*(mg+2) + 2*mg + mc
         ie = iw + mc + 1
-        if = ie + me*l
-        ig = if + me
+        iff = ie + me*l
+        ig = iff + me
 
         !  triangularize c and apply factors to e and g
 
@@ -924,7 +924,7 @@
         if ( mc/=n ) then
 
             do i = 1 , me
-                w(if-1+i) = f(i) - ddot(mc,e(i,1),le,x,1)
+                w(iff-1+i) = f(i) - ddot(mc,e(i,1),le,x,1)
             end do
 
             !  store transformed e & g
@@ -942,7 +942,7 @@
                 do i = 1 , mg
                     h(i) = h(i) - ddot(mc,g(i,1),lg,x,1)
                 end do
-                call lsi(w(ie),w(if),w(ig),h,me,me,mg,mg,l,x(mc1),xnrm,  &
+                call lsi(w(ie),w(iff),w(ig),h,me,me,mg,mg,l,x(mc1),xnrm,  &
                          w(mc1),mode)
                 if ( mc==0 ) return
                 t = dnrm2(mc,x,1)
@@ -955,9 +955,9 @@
                 mode = 7
                 k = max(le,n)
                 t = sqrt(epmach)
-                call hfti(w(ie),me,me,l,w(if),k,1,t,krank,dum,w,w(l+1))
+                call hfti(w(ie),me,me,l,w(iff),k,1,t,krank,dum,w,w(l+1))
                 xnrm = dum(1)
-                call dcopy(l,w(if),1,x(mc1),1)
+                call dcopy(l,w(iff),1,x(mc1),1)
                 if ( krank/=l ) return
                 mode = 1
             end if
