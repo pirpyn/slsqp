@@ -8,6 +8,7 @@ modes = static-gnu static-gnu-debug
 
 [common-variables]
 $MOD_FILE    = slsqp_module.f90
+$EXT_LIB     = -llapack -lblas
 $FORD_FILE   = slsqp.md
 $STATIC_LIB  = libslsqp.a
 $SHARED_LIB  = libslsqp.so
@@ -29,11 +30,12 @@ src             = ./src/
 colors          = True
 quiet           = False
 log             = False
-jobs            = 2
+jobs            = 8
 mklib           = static
 target          = $MOD_FILE
 output          = $STATIC_LIB
 exclude_dirs    = $EXCLUDE_DIRS
+lflags          = $EXT_LIB
 
 [template-shared]
 cflags_heritage = True
@@ -44,11 +46,12 @@ src             = ./src/
 colors          = True
 quiet           = False
 log             = False
-jobs            = 2
+jobs            = 8
 mklib           = shared
 target          = $MOD_FILE
 output          = $SHARED_LIB
 exclude_dirs    = $EXCLUDE_DIRS
+lflags          = $EXT_LIB
 
 [template-tests]
 cflags_heritage = True
@@ -59,8 +62,9 @@ src             = ./src/
 colors          = True
 quiet           = False
 log             = False
-jobs            = 2
+jobs            = 8
 exclude_dirs    = $EXCLUDE_DIRS
+lflags          = $EXT_LIB
 
 # main modes
 

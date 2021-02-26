@@ -9,9 +9,16 @@
         {
             "label": "FoBiS build",
             "type": "shell",
-            "command": "FoBiS.py build -f slsqp.fobis -mode tests-gnu-debug ",
+            "command": "FoBiS.py build -f slsqp.fobis -mode tests-gnu-debug",
             "group": "build",
             "problemMatcher": "$gcc",
+        },
+        {
+            "label": "run slsqp_test",
+            "type": "shell",
+            "command": "./bin/slsqp_test ",
+            "group": "test",
+            "dependsOn": "FoBiS build",
         }
     ]
 }
